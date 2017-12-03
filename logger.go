@@ -64,7 +64,7 @@ type Logger struct {
 
 // Returns a proper string to be outputted for a particular info
 func (r *Info) Output() string {
-	msg := fmt.Sprintf(r.format, r.Id, r.Time, r.Filename, r.Line, r.Level, r.Message)
+	msg := fmt.Sprintf(r.format, r.Id, r.Time, r.Level, r.Message)
 	return msg
 }
 
@@ -137,7 +137,7 @@ func (l *Logger) Log(lvl string, message string) {
 }
 
 func (l *Logger) log_internal(lvl string, message string, pos int) {
-	var formatString string = "#%d %s %s:%d ▶ %.3s %s"
+	var formatString string = "#%d %s ▶ %.3s %s"
 	_, filename, line, _ := runtime.Caller(pos)
 	filename = path.Base(filename)
 	info := &Info{
